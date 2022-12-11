@@ -1,20 +1,27 @@
 import React from 'react'
 import IngredientsList from './IngredientsList'
 
-export default function Recipe(props) {
+const Recipe = (props) => {
     const {
+        id,
         name,
         cookTime,
         servings,
         instructions,
-        ingredients
+        ingredients,
+        handleRecipeDelete
     } = props
 
     return (
         <div className='recipe'>
             <div className='btn__container'>
                 <button className='btn btn--primary mr-1'>Edit</button>
-                <button className='btn btn--danger'>Delete</button>
+                <button
+                 className='btn btn--danger'
+                 onClick={() => handleRecipeDelete(id)}
+                 >
+                    Delete
+                </button>
             </div>
             <div className='recipe__header'>
                 <h3 className='recipe__title'>{name}</h3>
@@ -40,4 +47,6 @@ export default function Recipe(props) {
             </div>
         </div>
     )
-    }
+    };
+
+    export default Recipe;

@@ -1,55 +1,45 @@
-import React from "react";
+import React, {useState} from "react";
 import RecipeList from "./RecipeList";
+import sampleRecipes from "./sampleRecipes"
 import '../css/app.css'
+import { v4 as uuidv4 } from 'uuid'
 
-function App() {
+const App = () => {
+  const [recipes, setRecipes] = useState(sampleRecipes)
+
+  const handleRecipeAdd = () => {
+    const newRecipe = {
+      id: uuidv4(),
+      name: 'New',
+      servings: 1,
+      cookTime: '1:00',
+      instructions: 'Instr.',
+      ingredients: [
+        { id: uuidv4(), name: 'Name', amount: '1 Tbs'}
+      ]
+    }
+  
+  setRecipes([...recipes, newRecipe])
+  
+  }
+
+  const handleRecipeDelete = (id) => {
+  setRecipes(recipes.filter(recipe => recipe.id !== id))
+  }
+
   return (
     <>
     <div className="title">Rahul's Cookbook</div>
-    <RecipeList recipes={sampleRecipes}/>
+    <RecipeList 
+    recipes={recipes}
+    handleRecipeAdd={handleRecipeAdd}
+    handleRecipeDelete={handleRecipeDelete}/>
     </>
 
   )
-}
 
-const sampleRecipes = [
-  {
-    id: 1,
-    name: 'Pasta',
-    servings: 3,
-    cookTime: '0:20',
-    instructions: "1. Boil Water \n2. Place Pasta in Water\n3. Cook on high heat for 12-15 mins",
-    ingredients: [
-      {
-        id: 1,
-        name: 'Pasta',
-        amount: '200g'
-      },
-      {
-        id: 2,
-        name: 'Water',
-        amount: '600g'
-      }
-    ]
-  },
-  {
-    id: 2,
-    name: 'Rice',
-    servings: 2,
-    cookTime: '0:25',
-    instructions: "1. Boil Water \n2. Place Rice in Water\n3. Cook on low heat for 15-20 mins",
-    ingredients: [
-      {
-        id: 1,
-        name: 'Rice',
-        amount: '200g'
-      },
-      {
-        id: 2,
-        name: 'Water',
-        amount: '600g'
-      }
-    ]
-  }
-]
+};
+
+
+
 export default App;
