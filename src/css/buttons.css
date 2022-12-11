@@ -10,6 +10,11 @@
 
 }
 
+.btn__container {
+    text-align:center;
+
+}
+
 .btn--primary {
     color: white;
     background-color: hsl(200, 100%, 50%);
