@@ -3,6 +3,7 @@ import Recipe from './Recipe'
 
 export default function RecipeList( { recipes }) {
   return (
+    <>
     <div>
       {recipes.map(recipe => {
         return (
@@ -13,6 +14,8 @@ export default function RecipeList( { recipes }) {
         )
       })}
     </div>
+    <button>Add Recipe</button>
+    </>
 
   )
 }
