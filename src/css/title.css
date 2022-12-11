@@ -1,0 +1,10 @@
+.title {
+    width: 50%;
+    text-align:center;
+    color: grey;
+    min-height: 5vh;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    border-right: 1px solid black;
+}

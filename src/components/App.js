@@ -4,7 +4,11 @@ import '../css/app.css'
 
 function App() {
   return (
+    <>
+    <div className="title">Rahul's Cookbook</div>
     <RecipeList recipes={sampleRecipes}/>
+    </>
+
   )
 }
 
@@ -33,7 +37,7 @@ const sampleRecipes = [
     name: 'Rice',
     servings: 2,
     cookTime: '0:25',
-    instructions: "1. Boil Water \n2. Place 200g Rice in Water\n3. Cook on low heat for 15-20 mins",
+    instructions: "1. Boil Water \n2. Place Rice in Water\n3. Cook on low heat for 15-20 mins",
     ingredients: [
       {
         id: 1,
