@@ -1,7 +1,7 @@
 import React from 'react'
 import Ingredient from './Ingredient'
 
-const ingredientsList = ( { ingredients }) => {
+const IngredientsList = ( { ingredients }) => {
     const ingredientElements = ingredients.map(ingredient => {
         return <Ingredient key={ingredient.id} {...ingredient} />
     })
@@ -12,4 +12,4 @@ const ingredientsList = ( { ingredients }) => {
   )
 };
 
-export default  ingredientsList;
+export default  IngredientsList;
