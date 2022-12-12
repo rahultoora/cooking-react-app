@@ -29,20 +29,23 @@ const App = () => {
   const handleRecipeAdd = () => {
     const newRecipe = {
       id: uuidv4(),
-      name: 'New',
+      name: '',
       servings: 1,
-      cookTime: '1:00',
-      instructions: 'Instr.',
+      cookTime: '',
+      instructions: '',
       ingredients: [
-        { id: uuidv4(), name: 'Name', amount: '1 Tbs'}
+        { id: uuidv4(), name: '', amount: ''}
       ]
     }
-  
+  setSelectedrecipeId(newRecipe.id)
   setRecipes([...recipes, newRecipe])
   }
 
   const handleRecipeDelete = (id) => {
-  setRecipes(recipes.filter(recipe => recipe.id !== id))
+    if (selectedRecipeId != null && selectedRecipeId === id) {
+      setSelectedrecipeId(undefined)
+    }
+    setRecipes(recipes.filter(recipe => recipe.id !== id))
   }
 
   const handleRecipeSelect = (id) => {
