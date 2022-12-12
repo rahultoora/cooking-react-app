@@ -5,9 +5,10 @@ import '../css/app.css'
 import { v4 as uuidv4 } from 'uuid'
 
 export const RecipeContext = React.createContext()
-const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
+
 
 const App = () => {
+  const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
   const [recipes, setRecipes] = useState(() => { 
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (recipeJSON == null) {
