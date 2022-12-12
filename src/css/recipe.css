@@ -8,14 +8,14 @@
     border-top: 1px solid black;
 }
 .recipe__header {
-    display:flex;
+    display: flex;
     justify-content: space-between;
-    margin: 40px;
     align-items: center;
-}
+    margin-bottom: 30px;
+  }
 .recipe__title {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.75rem;
 }
 
 .recipe__row {

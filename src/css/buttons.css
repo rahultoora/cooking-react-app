@@ -5,13 +5,8 @@
     font-weight: bold;
     font-size: inherit;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 5px 20px;
     cursor: pointer;
-
-}
-
-.btn__container {
-    text-align:center;
 
 }
 

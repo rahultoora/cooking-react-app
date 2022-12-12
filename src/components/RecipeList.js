@@ -8,6 +8,7 @@ const RecipeList = ({recipes}) => {
 
   return (
     <div className='recipe-list'>
+    <div className="title">Rahul's Cookbook</div>
     <div>
       {recipes.map(recipe => {
         return (
