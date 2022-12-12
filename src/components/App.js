@@ -9,6 +9,7 @@ export const RecipeContext = React.createContext()
 const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
 
 const App = () => {
+
   const [selectedRecipeId, setSelectedrecipeId] = useState()
 
   const [recipes, setRecipes] = useState(() => { 
@@ -21,6 +22,7 @@ const App = () => {
   })
 
   const selectedRecipe = recipes.find(recipe => recipe.id === selectedRecipeId)
+  
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes))
   }, [recipes])
