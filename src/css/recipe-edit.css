@@ -24,11 +24,14 @@
 
 .recipe-edit__details-grid {
     display: grid;
+    gap: 10px;
     grid-template-columns: auto 1fr;
 }
+
 .recipe-edit__label {
     font-weight: bold;
 }
+
 .recipe-edit__input {
     border: 1px solid black;
     border-radius: 5px;
