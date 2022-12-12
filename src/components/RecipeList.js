@@ -2,15 +2,34 @@ import React, {useContext} from 'react'
 import Recipe from './Recipe'
 import { RecipeContext } from './App';
 
-const RecipeList = ({recipes}) => {
+const RecipeList = (props) => {
 
-  const {handleRecipeAdd} = useContext(RecipeContext)
+  const {
+    recipes, 
+    searchedRecipes, 
+    searchedRecipeInput} = props 
+
+  const {handleRecipeAdd, handleRecipeSearch} = useContext(RecipeContext)
 
   return (
     <div className='recipe-list'>
     <div className="title">Rahul's Cookbook</div>
+    <div className='recipe-list__search-input-container'>
+    <input 
+        type='text' 
+        name='search' 
+        id='search' 
+        value={searchedRecipeInput}
+        onChange={e => handleRecipeSearch(e.target.value)}
+        className='recipe-list__search-input' />
+    </div>
     <div>
-      {recipes.map(recipe => {
+      {searchedRecipes.length !== 0 ? 
+      searchedRecipes.map(recipe => {
+        return (
+          <Recipe key={recipe.id} {...recipe} /> 
+        )
+      }) : recipes.map(recipe => {
         return (
           <Recipe key={recipe.id} {...recipe} /> 
         )
@@ -27,6 +46,7 @@ const RecipeList = ({recipes}) => {
 
   )
 };
+
 
 export default RecipeList;
 

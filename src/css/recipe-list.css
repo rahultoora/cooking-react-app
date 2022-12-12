@@ -12,3 +12,19 @@
     text-align:center;
 
 }
+
+.recipe-list__search-input-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align:center;
+
+}
+
+.recipe-list__search-input {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: inherit;
+    outline: none;
+    width: 75%;
+    font-weight: 100;
+}

@@ -21,6 +21,9 @@ const App = () => {
     }
   })
 
+  const [searchedRecipeInput, setSearchedRecipeInput] = useState('Search Recipe')
+  const [searchedRecipes, setSearchedRecipes] = useState([])
+
   const selectedRecipe = recipes.find(recipe => recipe.id === selectedRecipeId)
   
   useEffect(() => {
@@ -61,16 +64,28 @@ const App = () => {
     setRecipes(newRecipes)
   }
 
+  const handleRecipeSearch = (name) => {
+    setSearchedRecipeInput(name)
+    const allRecipes = [...recipes]
+    const filterRecipes = allRecipes.filter(r => r.name.includes(name))
+    setSearchedRecipes(filterRecipes)
+  }
+
   const recipeContextValue = {
     handleRecipeAdd,
     handleRecipeDelete,
     handleRecipeSelect,
-    handleRecipeChange
+    handleRecipeChange,
+    handleRecipeSearch
   }
 
   return (
     <RecipeContext.Provider value={recipeContextValue}>
-      <RecipeList recipes={recipes} />
+      <RecipeList 
+        recipes={recipes} 
+        searchedRecipes={searchedRecipes} 
+        searchedRecipeInput={searchedRecipeInput}
+      />
       {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
     </RecipeContext.Provider>
 
