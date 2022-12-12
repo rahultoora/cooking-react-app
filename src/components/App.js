@@ -62,12 +62,13 @@ const App = () => {
     const index = newRecipes.findIndex(r => r.id === id)
     newRecipes[index] = recipe
     setRecipes(newRecipes)
+    setSearchedRecipes([])
   }
 
   const handleRecipeSearch = (name) => {
-    setSearchedRecipeInput(name)
     const allRecipes = [...recipes]
     const filterRecipes = allRecipes.filter(r => r.name.includes(name))
+    setSearchedRecipeInput(name)
     setSearchedRecipes(filterRecipes)
   }
 
