@@ -21,7 +21,7 @@ const App = () => {
     }
   })
 
-  const [searchedRecipeInput, setSearchedRecipeInput] = useState('Search Recipe')
+  const [searchedRecipeInput, setSearchedRecipeInput] = useState('Search Cook Book')
   const [searchedRecipes, setSearchedRecipes] = useState([])
 
   const selectedRecipe = recipes.find(recipe => recipe.id === selectedRecipeId)
@@ -30,6 +30,10 @@ const App = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes))
   }, [recipes])
 
+  const handleRecipeSearch = (name) => {
+    setSearchedRecipeInput(name)
+    setSearchedRecipes(recipes.filter(r => r.name.includes(name)))
+  }
 
   const handleRecipeAdd = () => {
     const newRecipe = {
@@ -44,13 +48,16 @@ const App = () => {
     }
   setSelectedrecipeId(newRecipe.id)
   setRecipes([...recipes, newRecipe])
+  setSearchedRecipes([...recipes, newRecipe].filter(recipe => recipe.name.includes(searchedRecipeInput)))
   }
+
 
   const handleRecipeDelete = (id) => {
     if (selectedRecipeId != null && selectedRecipeId === id) {
       setSelectedrecipeId(undefined)
     }
     setRecipes(recipes.filter(recipe => recipe.id !== id))
+    setSearchedRecipes(recipes.filter(recipe => recipe.id !== id && recipe.name.includes(searchedRecipeInput)))
   }
 
   const handleRecipeSelect = (id) => {
@@ -62,15 +69,10 @@ const App = () => {
     const index = newRecipes.findIndex(r => r.id === id)
     newRecipes[index] = recipe
     setRecipes(newRecipes)
-    setSearchedRecipes([])
+    setSearchedRecipes(newRecipes.filter(recipe => recipe.name.includes(searchedRecipeInput)))
+
   }
 
-  const handleRecipeSearch = (name) => {
-    const allRecipes = [...recipes]
-    const filterRecipes = allRecipes.filter(r => r.name.includes(name))
-    setSearchedRecipeInput(name)
-    setSearchedRecipes(filterRecipes)
-  }
 
   const recipeContextValue = {
     handleRecipeAdd,
@@ -93,7 +95,5 @@ const App = () => {
   )
 
 };
-
-
 
 export default App;

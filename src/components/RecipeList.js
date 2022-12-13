@@ -3,11 +3,10 @@ import Recipe from './Recipe'
 import { RecipeContext } from './App';
 
 const RecipeList = (props) => {
-
   const {
     recipes, 
     searchedRecipes, 
-    searchedRecipeInput} = props 
+    searchedRecipeInput} = props
 
   const {handleRecipeAdd, handleRecipeSearch} = useContext(RecipeContext)
 
@@ -24,7 +23,7 @@ const RecipeList = (props) => {
         className='recipe-list__search-input' />
     </div>
     <div>
-      {searchedRecipes.length !== 0 ? 
+      {(searchedRecipes.length >= 0) ? 
       searchedRecipes.map(recipe => {
         return (
           <Recipe key={recipe.id} {...recipe} /> 
